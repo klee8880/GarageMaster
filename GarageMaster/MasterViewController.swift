@@ -65,9 +65,9 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UIVehicleCell
         let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        cell.vehicleName!.text = object.description
         return cell
     }
 
@@ -85,6 +85,23 @@ class MasterViewController: UITableViewController {
         }
     }
 
+
+}
+
+class UIVehicleCell: UITableViewCell {
+
+    @IBOutlet weak var vehicleName: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
 
 }
 
