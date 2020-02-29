@@ -88,6 +88,8 @@ class MasterViewController: UITableViewController {
 
 }
 
+// MARK: - /Car Cell
+
 class UIVehicleCell: UITableViewCell {
 
     @IBOutlet weak var vehicleName: UILabel!
