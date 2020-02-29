@@ -19,7 +19,8 @@ class maintinanceSchedule {
     var startDate: Date
     var dateInterval: Int?
     var mileInterval: Int?
-    var lastPerformed: Date?
+    var lastPerformedDate: Date?
+    var lastPerformedMiles: Int?
     
     init(startDate: Date){
         self.startDate = startDate
