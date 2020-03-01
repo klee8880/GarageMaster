@@ -10,11 +10,11 @@
 		0150ACAC240753B30008CF71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACAB240753B30008CF71 /* AppDelegate.swift */; };
 		0150ACAE240753B30008CF71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACAD240753B30008CF71 /* SceneDelegate.swift */; };
 		0150ACB0240753B30008CF71 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACAF240753B30008CF71 /* MasterViewController.swift */; };
-		0150ACB2240753B30008CF71 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACB1240753B30008CF71 /* DetailViewController.swift */; };
 		0150ACB5240753B30008CF71 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0150ACB3240753B30008CF71 /* Main.storyboard */; };
 		0150ACB7240753B90008CF71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0150ACB6240753B90008CF71 /* Assets.xcassets */; };
 		0150ACBA240753B90008CF71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0150ACB8240753B90008CF71 /* LaunchScreen.storyboard */; };
 		0150ACC424075EEA0008CF71 /* VehicleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACC324075EEA0008CF71 /* VehicleData.swift */; };
+		0150ACCA240B66080008CF71 /* VehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACC9240B66080008CF71 /* VehicleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,12 +22,12 @@
 		0150ACAB240753B30008CF71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0150ACAD240753B30008CF71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0150ACAF240753B30008CF71 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		0150ACB1240753B30008CF71 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0150ACB4240753B30008CF71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0150ACB6240753B90008CF71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0150ACB9240753B90008CF71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0150ACBB240753B90008CF71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0150ACC324075EEA0008CF71 /* VehicleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleData.swift; sourceTree = "<group>"; };
+		0150ACC9240B66080008CF71 /* VehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +63,12 @@
 				0150ACAB240753B30008CF71 /* AppDelegate.swift */,
 				0150ACAD240753B30008CF71 /* SceneDelegate.swift */,
 				0150ACAF240753B30008CF71 /* MasterViewController.swift */,
-				0150ACB1240753B30008CF71 /* DetailViewController.swift */,
 				0150ACB3240753B30008CF71 /* Main.storyboard */,
 				0150ACB6240753B90008CF71 /* Assets.xcassets */,
 				0150ACB8240753B90008CF71 /* LaunchScreen.storyboard */,
 				0150ACBB240753B90008CF71 /* Info.plist */,
 				0150ACC324075EEA0008CF71 /* VehicleData.swift */,
+				0150ACC9240B66080008CF71 /* VehicleViewController.swift */,
 			);
 			path = GarageMaster;
 			sourceTree = "<group>";
@@ -147,8 +147,8 @@
 				0150ACAC240753B30008CF71 /* AppDelegate.swift in Sources */,
 				0150ACAE240753B30008CF71 /* SceneDelegate.swift in Sources */,
 				0150ACB0240753B30008CF71 /* MasterViewController.swift in Sources */,
-				0150ACB2240753B30008CF71 /* DetailViewController.swift in Sources */,
 				0150ACC424075EEA0008CF71 /* VehicleData.swift in Sources */,
+				0150ACCA240B66080008CF71 /* VehicleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,12 +9,14 @@
 import Foundation
 
 // MARK: - Maintinance Data
-enum scheduleType{
-    case oneTime
-    case recurring
-}
 
 class maintinanceSchedule {
+    enum scheduleType{
+        case oneTime
+        case recurring
+    }
+    
+    var name: String = ""
     var type: scheduleType
     var startDate: Date
     var dateInterval: Int?
@@ -34,24 +36,19 @@ class maintinanceEvent {
     var description: String = ""
 }
 
-// MARK: - Insurance Data
-
-class insuranceData {
-    var company: String?
-    var policyNumber = ""
-    var endDate: Date?
-}
-
 // MARK: - Vehicle Data
-enum VehicleType{
-    case petroleum
-    case diesel
-    case electric
-    case mechanical
-}
 
 class VehicleData{
+    enum VehicleType{
+        case petroleum
+        case diesel
+        case electric
+        case mechanical
+    }
     
+    var title: String = ""
+    var liscense: String = ""
+    var vin: String = ""
     var type: VehicleType = VehicleType.petroleum
     var capacity: Float?
     var mileage: Float?
@@ -62,11 +59,15 @@ class VehicleData{
     }
     var schedules: [maintinanceSchedule] = []
     var VIN: String?
-    var insurance: insuranceData?
+    var company: String?
+    var policyNumber: String?
+    var endDate: Date?
+    var phoneNumber: String?
     
     init(){}
     
-    init(mileage: Float, efficiency: Float, capacity: Float, type: VehicleType){
+    init(title: String, mileage: Float, efficiency: Float, capacity: Float, type: VehicleType){
+        self.title = title
         self.type = type
         self.mileage = mileage
         self.efficiency = efficiency
