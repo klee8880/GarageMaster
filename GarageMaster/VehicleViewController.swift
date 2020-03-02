@@ -10,6 +10,9 @@ import UIKit
 
 class VehicleViewController: UITableViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    var editable = false
+    
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var liscense: UITextField!
     @IBOutlet weak var vin: UITextField!
@@ -22,6 +25,15 @@ class VehicleViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var policyNumber: UITextField!
     @IBOutlet weak var policyDate: UIDatePicker!
     @IBOutlet weak var policyPhone: UITextField!
+    
+    @IBOutlet var dataFields: [UITextField]!
+    
+    var detailItem: VehicleData? {
+        didSet {
+            // Update the view.
+            configureView()
+        }
+    }
     
     func configureView() {
         // Update the user interface for the detail item.
@@ -88,12 +100,53 @@ class VehicleViewController: UITableViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         configureView()
     }
-
-    var detailItem: VehicleData? {
-        didSet {
-            // Update the view.
-            configureView()
+    
+    @IBAction func EditPush(_ sender: UIBarButtonItem) {
+        if editable {
+            editable = false
+            editButton.title = "Edit"
+            for field in dataFields{
+                field.isEnabled = false
+            }
+            //TODO: prompt if user wants to save new data
+            writeData()
         }
+        else {
+            editable = true
+            editButton.title = "Done"
+            for field in dataFields{
+                field.isEnabled = true
+            }
+        }
+    }
+    
+    func writeData (){
+        if let vehicle = detailItem {
+            vehicle.title = name.text!
+            vehicle.liscense = liscense.text!
+            vehicle.vin = vin.text!
+            if let mileage = Float(odometer.text!){
+                vehicle.mileage = mileage
+            }
+            //TODO: Get Fueling Type Data
+            
+            if let cap = Float(capacity.text!){
+                vehicle.capacity = cap
+            }
+            else {vehicle.capacity = nil}
+            
+            if let eff = Float (efficiency.text!){
+                vehicle.efficiency = eff
+            }
+            else {vehicle.efficiency = nil}
+            
+            vehicle.company = policyCompany.text!
+            vehicle.policyNumber = policyNumber.text!
+            vehicle.endDate = policyDate.date
+            vehicle.phoneNumber = policyPhone.text!
+            
+        }
+        
     }
     // MARK: - Table view data source
     /*

@@ -46,9 +46,9 @@ class VehicleData{
         case mechanical
     }
     
-    var title: String = "PlaceHolderTitle"
-    var liscense: String = "PlaceHolderLiscense"
-    var vin: String = "VinNumber"
+    var title: String = "New Vehicle"
+    var liscense: String = ""
+    var vin: String = ""
     var type: VehicleType = VehicleType.petroleum
     var capacity: Float?
     var mileage: Float?

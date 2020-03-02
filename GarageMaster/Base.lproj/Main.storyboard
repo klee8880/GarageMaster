@@ -213,11 +213,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="235"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LCg-aH-g9U">
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LCg-aH-g9U">
                                                     <rect key="frame" x="20" y="46" width="374" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
-                                                        <segment title="Gas" enabled="NO"/>
+                                                        <segment title="Gas"/>
                                                         <segment title="Diesel"/>
                                                         <segment title="Electric"/>
                                                         <segment title="Mechanical"/>
@@ -234,7 +234,7 @@
                                                     <rect key="frame" x="166" y="93" width="228" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Efficiency:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOi-0Y-3pf">
                                                     <rect key="frame" x="20" y="135" width="80" height="34"/>
@@ -329,11 +329,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <datePicker contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Fu3-Tx-evQ">
-                                                    <rect key="frame" x="143" y="124" width="251" height="109"/>
+                                                    <rect key="frame" x="169" y="124" width="225" height="109"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 </datePicker>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ht9-E5-5wf">
-                                                    <rect key="frame" x="143" y="236" width="251" height="34"/>
+                                                    <rect key="frame" x="169" y="236" width="225" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -349,9 +349,16 @@
                             <outlet property="delegate" destination="pgU-05-ILz" id="ptc-DG-2KC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HGi-gB-1Wq"/>
+                    <navigationItem key="navigationItem" id="HGi-gB-1Wq">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="F3M-b8-vfU">
+                            <connections>
+                                <action selector="EditPush:" destination="pgU-05-ILz" id="xXZ-qx-G62"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="capacity" destination="NNV-7Z-bUl" id="eNO-iZ-all"/>
+                        <outlet property="editButton" destination="F3M-b8-vfU" id="vB9-GG-qZ3"/>
                         <outlet property="efficiency" destination="QtO-O8-kL9" id="jhJ-Jb-n10"/>
                         <outlet property="liscense" destination="aZq-SQ-VHg" id="DTu-65-Nq3"/>
                         <outlet property="name" destination="Iyh-o7-NcB" id="jWW-iG-EEu"/>
@@ -363,6 +370,15 @@
                         <outlet property="totalRange" destination="izx-tk-CD8" id="t1l-6v-QEi"/>
                         <outlet property="type" destination="LCg-aH-g9U" id="NmT-iA-8v8"/>
                         <outlet property="vin" destination="Nlf-Tl-oLv" id="0Wc-FI-xFt"/>
+                        <outletCollection property="dataFields" destination="Iyh-o7-NcB" collectionClass="NSMutableArray" id="d9y-5m-7pF"/>
+                        <outletCollection property="dataFields" destination="aZq-SQ-VHg" collectionClass="NSMutableArray" id="Skv-5I-ko5"/>
+                        <outletCollection property="dataFields" destination="Nlf-Tl-oLv" collectionClass="NSMutableArray" id="s6p-TO-Z6j"/>
+                        <outletCollection property="dataFields" destination="JGA-GQ-j8h" collectionClass="NSMutableArray" id="Ckz-cC-NVZ"/>
+                        <outletCollection property="dataFields" destination="NNV-7Z-bUl" collectionClass="NSMutableArray" id="1v1-R1-iSY"/>
+                        <outletCollection property="dataFields" destination="QtO-O8-kL9" collectionClass="NSMutableArray" id="ZzL-a1-deo"/>
+                        <outletCollection property="dataFields" destination="bam-V7-eZJ" collectionClass="NSMutableArray" id="iaf-az-0E0"/>
+                        <outletCollection property="dataFields" destination="K2A-FZ-BM1" collectionClass="NSMutableArray" id="2Ng-rI-FvY"/>
+                        <outletCollection property="dataFields" destination="ht9-E5-5wf" collectionClass="NSMutableArray" id="qs6-cC-lq2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egz-2C-OCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
