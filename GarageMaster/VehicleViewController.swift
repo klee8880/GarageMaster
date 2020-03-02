@@ -26,9 +26,60 @@ class VehicleViewController: UITableViewController, UITextFieldDelegate {
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = detailItem {
-            name.text = detail.title
-            liscense.text = detail.liscense
-            vin.text = detail.vin
+            if let name = name{
+                name.text = detail.title
+            }
+            if let lisc = liscense{
+                lisc.text = detail.liscense
+            }
+            if let vin = vin{
+                vin.text = detail.vin
+            }
+            if let odo = odometer {
+                if detail.mileage == nil{
+                    odo.text = ""
+                }
+                else {
+                    odo.text = "\(detail.mileage!)"
+                }
+            }
+            //TODO: get type data
+            if let cap = capacity{
+                if detail.capacity == nil{
+                    cap.text = ""
+                }
+                else {
+                cap.text = "\(detail.capacity!)"
+                }
+            }
+            if let efficiency = efficiency {
+                if detail.efficiency == nil{
+                    efficiency.text = ""
+                }
+                else{
+                    efficiency.text = "\(detail.efficiency!)"
+                }
+            }
+            //only calculate total range if both efficiency & capacity are filled
+            if detail.capacity != nil && detail.efficiency != nil{
+                if let range = totalRange{
+                    range.text = "\(detail.efficiency! * detail.capacity!)"
+                }
+            }
+            if let comp = policyCompany {
+                comp.text = detail.company
+            }
+            if let polNum = policyNumber{
+                polNum.text = detail.policyNumber
+            }
+            if let polDate = policyDate{
+                if let date = detail.endDate{
+                    polDate.date = date
+                }
+            }
+            if let phone = policyPhone{
+                phone.text = detail.phoneNumber
+            }
         }
     }
 

@@ -100,6 +100,9 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
+                                    <outlet property="license" destination="3sm-M1-h32" id="QPM-59-8NL"/>
+                                    <outlet property="mileage" destination="uBy-QO-DHb" id="bE4-Cb-HHc"/>
+                                    <outlet property="mpg" destination="Nd9-oB-HPF" id="YR5-zb-WC5"/>
                                     <outlet property="vehicleName" destination="o36-Tz-mgI" id="w6L-mF-H27"/>
                                     <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
                                 </connections>

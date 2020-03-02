@@ -74,8 +74,16 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UIVehicleCell
-        //let object = objects[indexPath.row]
-        //cell.vehicleName!.text = object.title
+        let object = objects[indexPath.row]
+        cell.vehicleName!.text = object.title
+        cell.license!.text = "License:" + object.liscense
+        
+        if object.mileage != nil{
+            cell.mileage.text = "Mileage: \(object.mileage!)"
+        }
+        if object.efficiency != nil {
+            cell.mpg.text = "MPG: \(object.efficiency!)"
+        }
         return cell
     }
 
@@ -101,6 +109,9 @@ class MasterViewController: UITableViewController {
 class UIVehicleCell: UITableViewCell {
 
     @IBOutlet weak var vehicleName: UILabel!
+    @IBOutlet weak var license: UILabel!
+    @IBOutlet weak var mileage: UILabel!
+    @IBOutlet weak var mpg: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

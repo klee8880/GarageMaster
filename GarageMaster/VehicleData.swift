@@ -46,9 +46,9 @@ class VehicleData{
         case mechanical
     }
     
-    var title: String = ""
-    var liscense: String = ""
-    var vin: String = ""
+    var title: String = "PlaceHolderTitle"
+    var liscense: String = "PlaceHolderLiscense"
+    var vin: String = "VinNumber"
     var type: VehicleType = VehicleType.petroleum
     var capacity: Float?
     var mileage: Float?
@@ -58,11 +58,10 @@ class VehicleData{
         return capacity! * efficiency!
     }
     var schedules: [maintinanceSchedule] = []
-    var VIN: String?
-    var company: String?
-    var policyNumber: String?
+    var company: String = "N/A#"
+    var policyNumber: String = "N/A#"
     var endDate: Date?
-    var phoneNumber: String?
+    var phoneNumber: String = "N/A#"
     
     init(){}
     
