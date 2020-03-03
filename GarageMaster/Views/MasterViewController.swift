@@ -55,6 +55,7 @@ class MasterViewController: UITableViewController {
                 let object = objects[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! VehicleViewController
                 controller.detailItem = object
+                controller.master = self //reference back to me as the master in case of update
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 detailViewController = controller
@@ -76,7 +77,7 @@ class MasterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! UIVehicleCell
         let object = objects[indexPath.row]
         cell.vehicleName!.text = object.title
-        cell.license!.text = "License:" + object.liscense
+        cell.license!.text = "License: " + object.liscense
         
         if object.mileage != nil{
             cell.mileage.text = "Mileage: \(object.mileage!)"
@@ -99,6 +100,10 @@ class MasterViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+    }
+    
+    func refreshTable() {
+        self.tableView.reloadData()
     }
 
 

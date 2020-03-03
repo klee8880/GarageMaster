@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VehicleViewController: UITableViewController, UITextFieldDelegate {
+class VehicleViewController: UITableViewController{
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     var editable = false
@@ -28,6 +28,7 @@ class VehicleViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet var dataFields: [UITextField]!
     
+    var master: MasterViewController? = nil
     var detailItem: VehicleData? {
         didSet {
             // Update the view.
@@ -110,6 +111,7 @@ class VehicleViewController: UITableViewController, UITextFieldDelegate {
             }
             //TODO: prompt if user wants to save new data
             writeData()
+            updateMaster()
         }
         else {
             editable = true
@@ -147,6 +149,10 @@ class VehicleViewController: UITableViewController, UITextFieldDelegate {
             
         }
         
+    }
+    
+    func updateMaster (){
+        master?.refreshTable()
     }
     // MARK: - Table view data source
     /*
