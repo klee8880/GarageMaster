@@ -1,5 +1,5 @@
 //
-//  FuelingViewController.swift
+//  MaintinanceViewController.swift
 //  GarageMaster
 //
 //  Created by Steven Lee on 3/3/20.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class FuelingViewController: UITableViewController {
+class MaintinanceViewController: UITableViewController {
     var detail: VehicleData?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +19,15 @@ class FuelingViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        navigationItem.rightBarButtonItem = addButton
+        
+        
+    }
+    
+    @objc
+    func insertNewObject(_ sender: Any) {
     }
 
     // MARK: - Table view data source
@@ -26,9 +35,10 @@ class FuelingViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let detail = self.detail { return detail.fueling.count }
-        else{ return 0 }
+        // #warning Incomplete implementation, return the number of rows
+        return 0
     }
+    
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,21 +94,7 @@ class FuelingViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
-
-//MARK: - Table Cell
-class UIFuelingCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
+    
 
 }

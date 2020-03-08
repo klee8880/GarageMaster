@@ -154,6 +154,24 @@ class VehicleViewController: UITableViewController{
     func updateMaster (){
         master?.refreshTable()
     }
+    
+    // MARK: - Segues
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier{
+            
+        case "inspectMaintinance":
+            (segue.destination as! MaintinanceViewController).detail = detailItem
+            return
+        case "inspectFueling":
+            (segue.destination as! FuelingViewController).detail = detailItem
+            return
+        case "addFueling":
+            return
+        default:
+            return
+        }
+    }
     // MARK: - Table view data source
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {

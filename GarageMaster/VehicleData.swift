@@ -8,6 +8,20 @@
 
 import Foundation
 
+// MARK: - Fueling Data
+class FuelingEvent {
+    var distance: Float
+    var price: Float
+    var volume: Float
+    var date: Date?
+    
+    init( distance:Float, price:Float, volume:Float){
+        self.distance = distance
+        self.price = price
+        self.volume = volume
+    }
+}
+
 // MARK: - Maintinance Data
 
 class maintinanceSchedule {
@@ -58,6 +72,7 @@ class VehicleData{
         return capacity! * efficiency!
     }
     var schedules: [maintinanceSchedule] = []
+    var fueling: [FuelingEvent] = []
     var company: String = "N/A#"
     var policyNumber: String = "N/A#"
     var endDate: Date?
