@@ -8,6 +8,26 @@
 
 import UIKit
 
+//MARK: - Table Cell
+class UIMaintCell: UITableViewCell {
+    @IBOutlet weak var maintLabel: UILabel!
+    @IBOutlet weak var dueLabel: UILabel!
+    @IBOutlet weak var nextMileageLabel: UILabel!
+    @IBOutlet weak var nextDateLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}
+
 class MaintinanceViewController: UITableViewController {
     var detail: VehicleData?
 
@@ -18,7 +38,7 @@ class MaintinanceViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
@@ -35,20 +55,18 @@ class MaintinanceViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int { return 1 }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        if let detail = self.detail{ return detail.schedules.count }
+        else{ return 0 }
     }
     
-
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "maintinanceCell", for: indexPath) as! UIMaintCell
 
         // Configure the cell...
+        
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

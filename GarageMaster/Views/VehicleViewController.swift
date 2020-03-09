@@ -56,7 +56,12 @@ class VehicleViewController: UITableViewController{
                     odo.text = "\(detail.mileage!)"
                 }
             }
-            //TODO: get type data
+            
+            if let type = type{
+                type.selectedSegmentIndex = detail.type.rawValue
+            }
+
+            
             if let cap = capacity{
                 if detail.capacity == nil{
                     cap.text = ""
@@ -109,6 +114,7 @@ class VehicleViewController: UITableViewController{
             for field in dataFields{
                 field.isEnabled = false
             }
+            type.isEnabled = false
             //TODO: prompt if user wants to save new data
             writeData()
             updateMaster()
@@ -119,6 +125,7 @@ class VehicleViewController: UITableViewController{
             for field in dataFields{
                 field.isEnabled = true
             }
+            type.isEnabled = true
         }
     }
     
@@ -130,7 +137,12 @@ class VehicleViewController: UITableViewController{
             if let mileage = Float(odometer.text!){
                 vehicle.mileage = mileage
             }
-            //TODO: Get Fueling Type Data
+            
+            if let typeSegment = self.type {
+                if let type = VehicleType(rawValue: typeSegment.selectedSegmentIndex){
+                    vehicle.type = type
+                }
+            }
             
             if let cap = Float(capacity.text!){
                 vehicle.capacity = cap
@@ -167,6 +179,9 @@ class VehicleViewController: UITableViewController{
             (segue.destination as! FuelingViewController).detail = detailItem
             return
         case "addFueling":
+            let controller = (segue.destination as! AddFuelingViewController)
+            controller.detail = detailItem
+            controller.presenter = self
             return
         default:
             return

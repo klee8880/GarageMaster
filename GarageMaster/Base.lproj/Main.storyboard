@@ -287,7 +287,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <state key="normal" title="+"/>
                                                     <connections>
-                                                        <segue destination="rxM-ht-9yo" kind="showDetail" id="gCb-oD-pCU"/>
+                                                        <segue destination="rxM-ht-9yo" kind="showDetail" identifier="addFueling" id="gCb-oD-pCU"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -446,7 +446,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="84" id="BJt-vQ-lK0">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="maintinanceCell" rowHeight="84" id="BJt-vQ-lK0" customClass="UIMaintCell" customModule="GarageMaster" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BJt-vQ-lK0" id="EHN-nj-eIs">
@@ -481,8 +481,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Due Soon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTL-8B-REq">
-                                            <rect key="frame" x="319" y="11" width="75" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTL-8B-REq">
+                                            <rect key="frame" x="356" y="11" width="38" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -490,6 +490,12 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dueLabel" destination="hTL-8B-REq" id="Wbm-VC-MHz"/>
+                                    <outlet property="maintLabel" destination="6eg-Mt-95j" id="klg-0B-x6Z"/>
+                                    <outlet property="nextDateLabel" destination="BXg-1j-JTT" id="hKB-G6-ap7"/>
+                                    <outlet property="nextMileageLabel" destination="DfA-Yu-8pU" id="cPd-Yz-Lsr"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -497,7 +503,9 @@
                             <outlet property="delegate" destination="gBU-ca-6FG" id="HJR-35-T03"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="xQz-P7-c24"/>
+                    <navigationItem key="navigationItem" id="xQz-P7-c24">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="r6n-wh-kD3"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcx-tw-ucn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -512,36 +520,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="79" id="DOG-Ue-rcp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="fuelingData" rowHeight="79" id="DOG-Ue-rcp" customClass="UIFuelingCell" customModule="GarageMaster" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DOG-Ue-rcp" id="JE9-FD-TTq" customClass="UIFuelingCell" customModule="GarageMaster" customModuleProvider="target">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DOG-Ue-rcp" id="JE9-FD-TTq">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWR-g9-WfI">
-                                            <rect key="frame" x="20" y="12" width="36" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lG1-Pz-1cS">
+                                            <rect key="frame" x="20" y="11" width="123" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="123" id="Pex-qp-tIm"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$---.--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4f-dv-fq0">
-                                            <rect key="frame" x="147" y="12" width="54" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$----.--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxv-vb-AQt">
+                                            <rect key="frame" x="20" y="47" width="99" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="99" id="Bye-7G-Vrh"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gallons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1q-P0-IOx">
-                                            <rect key="frame" x="264" y="11" width="57" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--- Gal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ctp-jZ-BlK">
+                                            <rect key="frame" x="273" y="46" width="121" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="121" id="Cip-Gr-OXY"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Ctp-jZ-BlK" firstAttribute="trailing" secondItem="JE9-FD-TTq" secondAttribute="trailingMargin" id="2ci-Sg-MfH"/>
+                                        <constraint firstItem="Ctp-jZ-BlK" firstAttribute="top" secondItem="JE9-FD-TTq" secondAttribute="topMargin" constant="35" id="TN3-Kg-Yit"/>
+                                        <constraint firstItem="rxv-vb-AQt" firstAttribute="bottom" secondItem="JE9-FD-TTq" secondAttribute="bottomMargin" id="UT2-eF-jsi"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Ctp-jZ-BlK" secondAttribute="bottom" constant="1" id="ffH-Cl-kaP"/>
+                                        <constraint firstItem="lG1-Pz-1cS" firstAttribute="leading" secondItem="rxv-vb-AQt" secondAttribute="leading" id="psW-Jx-NzH"/>
+                                        <constraint firstItem="lG1-Pz-1cS" firstAttribute="top" secondItem="JE9-FD-TTq" secondAttribute="topMargin" id="qyb-gZ-vJM"/>
+                                        <constraint firstItem="lG1-Pz-1cS" firstAttribute="leading" secondItem="JE9-FD-TTq" secondAttribute="leadingMargin" id="vgF-dk-D6k"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="costLabel" destination="rxv-vb-AQt" id="qrY-zf-fYP"/>
+                                    <outlet property="dateLabel" destination="lG1-Pz-1cS" id="BSJ-gU-VB2"/>
+                                    <outlet property="volumeLabel" destination="Ctp-jZ-BlK" id="7NY-gC-kF4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -552,12 +580,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dwj-qL-eKl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2022" y="467"/>
+            <point key="canvasLocation" x="2021.7391304347827" y="466.74107142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Fueling View Controller-->
         <scene sceneID="m6Z-9a-4eu">
             <objects>
-                <viewController id="rxM-ht-9yo" sceneMemberID="viewController">
+                <viewController id="rxM-ht-9yo" customClass="AddFuelingViewController" customModule="GarageMaster" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WE4-60-tE9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -592,13 +620,13 @@
                                 <rect key="frame" x="170" y="119" width="224" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9O6-0R-90u">
                                 <rect key="frame" x="170" y="171" width="224" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Odometer (Cur):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMN-vR-3Dc">
                                 <rect key="frame" x="20" y="229" width="126" height="21"/>
@@ -611,12 +639,27 @@
                                 <rect key="frame" x="170" y="222" width="224" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwU-yf-rJM">
+                                <rect key="frame" x="163" y="597" width="90" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Event"/>
+                                <connections>
+                                    <action selector="addEvent:" destination="rxM-ht-9yo" eventType="touchUpInside" id="pdH-JM-Dd2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bEg-a2-Liw"/>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="8hO-2G-QD4" id="Pby-Wc-rC0"/>
+                        <outlet property="odometerLabel" destination="oBH-cg-G4e" id="wyh-De-JbO"/>
+                        <outlet property="totalLabel" destination="9O6-0R-90u" id="hU7-Kv-KDE"/>
+                        <outlet property="volumeLabel" destination="rP6-c9-3mk" id="VVn-h7-tnK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ch-YV-lJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

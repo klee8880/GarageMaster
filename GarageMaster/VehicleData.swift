@@ -10,10 +10,14 @@ import Foundation
 
 // MARK: - Fueling Data
 class FuelingEvent {
-    var distance: Float
-    var price: Float
-    var volume: Float
+    var distance: Float?
+    var price: Float?
+    var volume: Float?
     var date: Date?
+    
+    init(){
+        
+    }
     
     init( distance:Float, price:Float, volume:Float){
         self.distance = distance
@@ -50,15 +54,17 @@ class maintinanceEvent {
     var description: String = ""
 }
 
+// MARK: - Vehicle Type
+enum VehicleType: Int{
+    case petroleum = 0
+    case diesel = 1
+    case electric = 2
+    case mechanical = 3
+}
+
 // MARK: - Vehicle Data
 
 class VehicleData{
-    enum VehicleType{
-        case petroleum
-        case diesel
-        case electric
-        case mechanical
-    }
     
     var title: String = "New Vehicle"
     var liscense: String = ""
