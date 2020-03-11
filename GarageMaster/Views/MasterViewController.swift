@@ -8,6 +8,8 @@
 
 import UIKit
 
+var subjectVehicle: VehicleData?
+
 class MasterViewController: UITableViewController {
 
     var detailViewController: VehicleViewController? = nil
@@ -42,6 +44,7 @@ class MasterViewController: UITableViewController {
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+/*
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = objects[indexPath.row]
@@ -53,6 +56,7 @@ class MasterViewController: UITableViewController {
                 detailViewController = controller
             }
         }
+ */
     }
 
     // MARK: - Table View
