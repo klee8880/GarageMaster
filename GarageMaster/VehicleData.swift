@@ -28,30 +28,50 @@ class FuelingEvent {
 
 // MARK: - Maintinance Data
 
-class maintinanceSchedule {
+class maintinanceSchedule{
     enum scheduleType{
         case oneTime
         case recurring
     }
     
-    var name: String = ""
-    var type: scheduleType
-    var startDate: Date
-    var dateInterval: Int?
-    var mileInterval: Int?
-    var lastPerformedDate: Date?
-    var lastPerformedMiles: Int?
+    var name: String = "New Event"
+    var type: scheduleType = .oneTime
+    var nextDateDue: Date?
+    var nextmileDue: Float?
+    var History: [maintinanceEvent] = [maintinanceEvent(nil, nil, 4000), maintinanceEvent(nil, nil, 5000), maintinanceEvent(nil, nil, 6000), maintinanceEvent(nil, nil, 7000)]
     
-    init(startDate: Date){
-        self.startDate = startDate
-        type = scheduleType.oneTime
+    init (){}
+    init (name: String, type: scheduleType){
+        self.name = name
+        self.type = type
+    }
+    
+    func dueSoon(odometer: Float) -> Bool{
+        if let mile = nextmileDue {
+            if (mile - odometer) < 750 {return true}
+        }
+        return false
+    }
+    
+    func dueSoon(date: Date) -> Bool{
+        if let dueDate = nextDateDue {
+            if (date.timeIntervalSince(dueDate)) < 30 {return true}
+        }
+        return false
     }
 }
 
 class maintinanceEvent {
     var mileage: Int?
-    var cost: Int?
-    var description: String = ""
+    var date: Date?
+    var cost: Float?
+    
+    init () {}
+    init (_ mileage: Int?,_ date: Date?,_ cost: Float?) {
+        self.mileage = mileage
+        self.date = date
+        self.cost = cost
+    }
 }
 
 // MARK: - Vehicle Type
@@ -77,7 +97,7 @@ class VehicleData{
         if capacity == nil || efficiency == nil {return nil}
         return capacity! * efficiency!
     }
-    var schedules: [maintinanceSchedule] = []
+    var schedules: [maintinanceSchedule] = [maintinanceSchedule(name: "Miscellaneous", type: .oneTime)]
     var fueling: [FuelingEvent] = []
     var company: String = "N/A#"
     var policyNumber: String = "N/A#"

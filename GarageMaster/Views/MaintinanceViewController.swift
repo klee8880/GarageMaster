@@ -10,10 +10,7 @@ import UIKit
 
 //MARK: - Table Cell
 class UIMaintCell: UITableViewCell {
-    @IBOutlet weak var maintLabel: UILabel!
-    @IBOutlet weak var dueLabel: UILabel!
-    @IBOutlet weak var nextMileageLabel: UILabel!
-    @IBOutlet weak var nextDateLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +35,7 @@ class MaintinanceViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
         navigationItem.rightBarButtonItem = addButton
@@ -48,6 +45,10 @@ class MaintinanceViewController: UITableViewController {
     
     @objc
     func insertNewObject(_ sender: Any) {
+        if let detail = self.detail {
+            detail.schedules.insert(maintinanceSchedule(), at: 0)
+            self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        }
     }
 
     // MARK: - Table view data source
@@ -61,10 +62,10 @@ class MaintinanceViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "maintinanceCell", for: indexPath) as! UIMaintCell
-
         // Configure the cell...
-        
-
+        if let category = detail?.schedules[indexPath.row]{
+            cell.categoryLabel.text = category.name
+        }
         return cell
     }
 
@@ -103,15 +104,23 @@ class MaintinanceViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier{
+        case "maintinanceInspector":
+            guard let index = tableView.indexPathForSelectedRow else {return}
+            
+            if let inspector = segue.destination as? MaintinanceInspectorViewController {
+                inspector.category = detail?.schedules[index.row]
+            }
+            return
+        default:
+            return
+        }
     }
-    */
     
     
 

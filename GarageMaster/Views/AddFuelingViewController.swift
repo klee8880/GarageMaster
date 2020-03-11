@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//MARK: - Main Body
 class AddFuelingViewController: UIViewController {
     @IBOutlet weak var volumeLabel: UITextField!
     @IBOutlet weak var totalLabel: UITextField!
@@ -15,7 +15,7 @@ class AddFuelingViewController: UIViewController {
     @IBOutlet weak var dateLabel: UIDatePicker!
     
     var detail: VehicleData?
-    var presenter: UIViewController?
+    var presenter: VehicleViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,10 @@ class AddFuelingViewController: UIViewController {
             }
         }
         if let label = totalLabel.text{
-            if label == "" {return}
+            if label == "" {
+                self.invalidInputAlert()
+                return
+            }
             if let total = Float(label){
                 fueling.price = total
             }
@@ -44,7 +47,10 @@ class AddFuelingViewController: UIViewController {
             fueling.date = label.date
         }
         if let label = odometerLabel.text{
-            if label == "" {return}
+            if label == "" {
+                self.invalidInputAlert()
+                return
+            }
             if let odo = Float(label){
                 detail?.mileage = odo
             }
@@ -52,12 +58,30 @@ class AddFuelingViewController: UIViewController {
         
         detail?.fueling.append(fueling)
         
-        if let controller = presenter as? VehicleViewController{
+        if let controller = presenter {
             controller.configureView()
             controller.updateMaster()
         }
         
-        dismiss(animated: true)
+        //Dismiss this view
+        if let nav = self.navigationController{
+            nav.popViewController(animated: true)
+        }
+        else{
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+//MARK: - Error Alert
+    
+    func invalidInputAlert(){
+        let alert = UIAlertController(title: "Incomplete Information", message: "The indicated fields must be completed before continuing", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style: .default){ (action) in }
+        
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     /*

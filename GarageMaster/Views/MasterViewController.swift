@@ -29,7 +29,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
+        //clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
     
@@ -38,14 +38,6 @@ class MasterViewController: UITableViewController {
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
-    /*
-    @objc
-    func insertNewObject(_ sender: Any) {
-        objects.insert(VehicleData(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-    }
-    */
     
     // MARK: - Segues
 
@@ -53,10 +45,10 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = objects[indexPath.row]
-                let controller = (segue.destination as! UINavigationController).topViewController as! VehicleViewController
+                let controller = segue.destination as! VehicleViewController
                 controller.detailItem = object
                 controller.master = self //reference back to me as the master in case of update
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
+                //controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
                 detailViewController = controller
             }
@@ -105,8 +97,6 @@ class MasterViewController: UITableViewController {
     func refreshTable() {
         self.tableView.reloadData()
     }
-
-
 }
 
 // MARK: - Car Cell

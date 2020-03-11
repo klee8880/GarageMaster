@@ -118,6 +118,7 @@ class VehicleViewController: UITableViewController{
             //TODO: prompt if user wants to save new data
             writeData()
             updateMaster()
+            configureView()
         }
         else {
             editable = true

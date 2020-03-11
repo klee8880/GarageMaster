@@ -16,6 +16,7 @@
 		0150ACC424075EEA0008CF71 /* VehicleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACC324075EEA0008CF71 /* VehicleData.swift */; };
 		0150ACCA240B66080008CF71 /* VehicleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACC9240B66080008CF71 /* VehicleViewController.swift */; };
 		016C61282415BE5B00910D21 /* AddFuelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016C61272415BE5B00910D21 /* AddFuelingViewController.swift */; };
+		016C612A2418551400910D21 /* MaintinanceInspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016C61292418551400910D21 /* MaintinanceInspectorViewController.swift */; };
 		0190CDB2240F0A30003E2017 /* FuelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190CDB1240F0A30003E2017 /* FuelingViewController.swift */; };
 		0190CDB7240F0EDF003E2017 /* MaintinanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0190CDB6240F0EDF003E2017 /* MaintinanceViewController.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		0150ACC324075EEA0008CF71 /* VehicleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleData.swift; sourceTree = "<group>"; };
 		0150ACC9240B66080008CF71 /* VehicleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleViewController.swift; sourceTree = "<group>"; };
 		016C61272415BE5B00910D21 /* AddFuelingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelingViewController.swift; sourceTree = "<group>"; };
+		016C61292418551400910D21 /* MaintinanceInspectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintinanceInspectorViewController.swift; sourceTree = "<group>"; };
 		0190CDB1240F0A30003E2017 /* FuelingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelingViewController.swift; sourceTree = "<group>"; };
 		0190CDB6240F0EDF003E2017 /* MaintinanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintinanceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 				0150ACC9240B66080008CF71 /* VehicleViewController.swift */,
 				0190CDB6240F0EDF003E2017 /* MaintinanceViewController.swift */,
 				016C61272415BE5B00910D21 /* AddFuelingViewController.swift */,
+				016C61292418551400910D21 /* MaintinanceInspectorViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				016C61282415BE5B00910D21 /* AddFuelingViewController.swift in Sources */,
 				0150ACB0240753B30008CF71 /* MasterViewController.swift in Sources */,
 				0150ACC424075EEA0008CF71 /* VehicleData.swift in Sources */,
+				016C612A2418551400910D21 /* MaintinanceInspectorViewController.swift in Sources */,
 				0150ACCA240B66080008CF71 /* VehicleViewController.swift in Sources */,
 				0190CDB7240F0EDF003E2017 /* MaintinanceViewController.swift in Sources */,
 			);
