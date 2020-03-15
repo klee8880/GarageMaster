@@ -23,6 +23,12 @@ class AddFuelingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func backgroundTap(_ sender: UIControl) {
+        volumeLabel.resignFirstResponder()
+        totalLabel.resignFirstResponder()
+        odometerLabel.resignFirstResponder()
+    }
+    
     @IBAction func addEvent(_ sender: Any) {
         
         let fueling = FuelingEvent()

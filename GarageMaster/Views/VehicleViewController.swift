@@ -9,8 +9,6 @@
 import UIKit
 
 class VehicleViewController: UITableViewController{
-    
-    @IBOutlet weak var editButton: UIBarButtonItem!
     var editable = false
     
     @IBOutlet weak var name: UITextField!
@@ -107,26 +105,19 @@ class VehicleViewController: UITableViewController{
         configureView()
     }
     
-    @IBAction func EditPush(_ sender: UIBarButtonItem) {
-        if editable {
-            editable = false
-            editButton.title = "Edit"
-            for field in dataFields{
-                field.isEnabled = false
-            }
-            type.isEnabled = false
-            //TODO: prompt if user wants to save new data
-            writeData()
-            updateMaster()
-            configureView()
-        }
-        else {
-            editable = true
-            editButton.title = "Done"
-            for field in dataFields{
-                field.isEnabled = true
-            }
-            type.isEnabled = true
+    @IBAction func doneEditing(_ sender: Any) {
+        writeData()
+        updateMaster()
+        configureView()
+    }
+
+    @IBAction func insuranceDateUpdate(_ sender: UIDatePicker) {
+        detailItem?.endDate = sender.date
+    }
+    
+    @IBAction func typeUpdated(_ sender: UISegmentedControl) {
+        if let type = VehicleType(rawValue: sender.selectedSegmentIndex){
+            detailItem?.type = type
         }
     }
     

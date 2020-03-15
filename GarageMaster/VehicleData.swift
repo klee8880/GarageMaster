@@ -65,6 +65,7 @@ class maintinanceEvent {
     var mileage: Int?
     var date: Date?
     var cost: Float?
+    var description: String = ""
     
     init () {}
     init (_ mileage: Int?,_ date: Date?,_ cost: Float?) {
