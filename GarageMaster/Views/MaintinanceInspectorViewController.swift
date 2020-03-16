@@ -70,7 +70,9 @@ class MaintinanceInspectorViewController: UIViewController, UITableViewDelegate,
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "maintEventAdd" {
-            
+            let view = segue.destination as! AddMaintinanceController
+            view.category = category
+            view.inspector = self
         }
     }
 

@@ -11,12 +11,23 @@ import UIKit
 //MARK: - Table Cell
 class UIMaintCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var background: UIView!
+    @IBOutlet weak var foreground: UIView!
+    
+    var progress: Float? = 1
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        var scale: CGFloat = CGFloat(1)
+        
+        if let progress = progress {
+            scale = background.frame.width * CGFloat(progress) - 30
+        }
+        
+        foreground.frame = CGRect(x: foreground.frame.origin.x, y: foreground.frame.origin.y, width: scale, height: foreground.frame.height)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -65,6 +76,7 @@ class MaintinanceViewController: UITableViewController {
         // Configure the cell...
         if let category = detail?.schedules[indexPath.row]{
             cell.categoryLabel.text = category.name
+            cell.progress = category.expiration(date: Date(), mileage: detail!.mileage)
         }
         return cell
     }

@@ -33,7 +33,11 @@ class maintinanceSchedule{
         case oneTime
         case recurring
     }
+    //Range used to measure the precentage regurned by the expiration function.
+    static var dateRange:Float = 90
+    static var mileRange:Float = 1000
     
+    //Data fields
     var name: String = "New Event"
     var type: scheduleType = .oneTime
     var nextDateDue: Date?
@@ -44,6 +48,45 @@ class maintinanceSchedule{
     init (name: String, type: scheduleType){
         self.name = name
         self.type = type
+    }
+    
+    func expiration(date: Date, mileage: Float?) -> Float?{
+        
+        if type == .oneTime {return 1}
+        
+        if nextDateDue != nil && nextmileDue != nil{
+            var datePercent = Float(date.distance(to: nextDateDue!)) / maintinanceSchedule.dateRange
+            if datePercent > 1 {datePercent = 1}
+            else if datePercent < 0 {datePercent = 0}
+            
+            guard let mile = mileage else {return datePercent}
+            
+            var milePercent = (nextmileDue! - mile ) / maintinanceSchedule.mileRange
+            if milePercent > 1 {milePercent = 1}
+            else if milePercent < 0 {milePercent = 0}
+            
+            if datePercent < milePercent { return datePercent}
+            else {return milePercent}
+        }
+        else if nextDateDue != nil {
+            var datePercent = Float(date.distance(to: nextDateDue!)) / maintinanceSchedule.dateRange
+            if datePercent > 1 {datePercent = 1}
+            else if datePercent < 0 {datePercent = 0}
+            
+            return datePercent
+        }
+        else if nextmileDue != nil{
+            guard let mile = mileage else {return nil}
+            
+            var milePercent = (nextmileDue! - mile ) / maintinanceSchedule.mileRange
+            if milePercent > 1 {milePercent = 1}
+            else if milePercent < 0 {milePercent = 0}
+            
+            return milePercent
+        }
+        else {
+            return nil
+        }
     }
     
     func dueSoon(odometer: Float) -> Bool{
@@ -59,16 +102,17 @@ class maintinanceSchedule{
         }
         return false
     }
+    
 }
 
 class maintinanceEvent {
-    var mileage: Int?
+    var mileage: Float?
     var date: Date?
     var cost: Float?
     var description: String = ""
     
     init () {}
-    init (_ mileage: Int?,_ date: Date?,_ cost: Float?) {
+    init (_ mileage: Float?,_ date: Date?,_ cost: Float?) {
         self.mileage = mileage
         self.date = date
         self.cost = cost

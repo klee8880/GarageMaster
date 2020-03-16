@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0137FFBC241DFF3200A8C459 /* AddMaintinanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0137FFBB241DFF3200A8C459 /* AddMaintinanceController.swift */; };
 		0150ACAC240753B30008CF71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACAB240753B30008CF71 /* AppDelegate.swift */; };
 		0150ACAE240753B30008CF71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACAD240753B30008CF71 /* SceneDelegate.swift */; };
 		0150ACB0240753B30008CF71 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0150ACAF240753B30008CF71 /* MasterViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0137FFBB241DFF3200A8C459 /* AddMaintinanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMaintinanceController.swift; sourceTree = "<group>"; };
 		0150ACA8240753B30008CF71 /* GarageMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GarageMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0150ACAB240753B30008CF71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0150ACAD240753B30008CF71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				0190CDB6240F0EDF003E2017 /* MaintinanceViewController.swift */,
 				016C61272415BE5B00910D21 /* AddFuelingViewController.swift */,
 				016C61292418551400910D21 /* MaintinanceInspectorViewController.swift */,
+				0137FFBB241DFF3200A8C459 /* AddMaintinanceController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0150ACAC240753B30008CF71 /* AppDelegate.swift in Sources */,
+				0137FFBC241DFF3200A8C459 /* AddMaintinanceController.swift in Sources */,
 				0190CDB2240F0A30003E2017 /* FuelingViewController.swift in Sources */,
 				0150ACAE240753B30008CF71 /* SceneDelegate.swift in Sources */,
 				016C61282415BE5B00910D21 /* AddFuelingViewController.swift in Sources */,
