@@ -33,7 +33,6 @@ class AddFuelingViewController: UIViewController {
         
         let fueling = FuelingEvent()
         
-        
         if let label = volumeLabel.text {
             if label == "" {return}
             if let vol = Float(label){

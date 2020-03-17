@@ -16,26 +16,90 @@ class MaintinanceInspectorViewController: UIViewController, UITableViewDelegate,
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var historyTable: UITableView!
     
+    var detail: VehicleData?
     var category: maintinanceSchedule?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         toolbar.items?.insert(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), at: 0)
+        
+        if let category = category{
+            titleField.text = category.name
+            
+            if let mileDue = category.nextmileDue{
+                mileField.text = "\(mileDue)"
+            }
+            else{
+                mileField.text = ""
+            }
+            
+            if let dateDue = category.nextDateDue{
+                datePicker.date = dateDue
+            }
+            
+            oneTimeSwitch.isOn = category.oneTime
+        }
     }
     
     @IBAction func deleteCategory(_ sender: Any) {
         
         let alert = UIAlertController(title: "Delete Category", message: "Deleting a maintinace category is perminant", preferredStyle: .actionSheet)
         
-        let okAction = UIAlertAction(title: "Continue", style: .default) {(_) in}
+        let okAction = UIAlertAction(title: "Continue", style: .default) {(_) in
+            
+            if self.detail == nil {return}
+            
+            if let index = self.detail!.schedules.firstIndex(where: {(schedule) in return schedule === self.category!}){
+                self.detail!.schedules.remove(at: index)
+            }
+            
+            self.navigationController?.popViewController(animated: true)
+        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive){(_) in}
         
-        alert.addAction(cancelAction)
         alert.addAction(okAction)
+        alert.addAction(cancelAction)
         
         self.present(alert, animated: true)
+    }
+    
+    @IBAction func touchBackground(_ sender: Any) {
+        titleField.resignFirstResponder()
+        mileField.resignFirstResponder()
+        updateCategory()
+    }
+    
+    @IBAction func exitField(_ sender: UITextField) {
+        updateCategory()
+    }
+    
+    @IBAction func newDate(_ sender: UIDatePicker) {
+        guard let category = category else{return}
+        category.nextDateDue = datePicker.date
+    }
+    
+    @IBAction func eventSwitched(_ sender: Any) {
+        updateCategory()
+    }
+    func updateCategory(){
+        if let category = category {
+            if let title = titleField.text{
+                category.name = title
+            }
+            
+            category.nextDateDue = datePicker.date
+            
+            category.oneTime = oneTimeSwitch.isOn
+            
+            if let mile = mileField.text{
+                if mile == "" {return}
+                if let decimal = Float(mile){
+                    category.nextmileDue = decimal
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,8 +113,13 @@ class MaintinanceInspectorViewController: UIViewController, UITableViewDelegate,
         let cell = historyTable.dequeueReusableCell(withIdentifier: "maintinanceCell") as! UIMaintEventCell
         
         if let event = self.category?.History[indexPath.row] {
+            
+            cell.descriptionLabel.text = event.description
+            
             if let date = event.date{
-                cell.dateLabel.text = "\(date)"
+                let dateFormat = DateFormatter()
+                dateFormat.dateFormat = "dd/MM/yyyy"
+                cell.dateLabel.text = "\(dateFormat.string(from: date))"
             }
             if let mileage = event.mileage {
                 cell.mileLabel.text = "\(mileage) Miles"
@@ -81,6 +150,7 @@ class MaintinanceInspectorViewController: UIViewController, UITableViewDelegate,
 //MARK: - Table Cell
 
 class UIMaintEventCell: UITableViewCell {
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var mileLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!

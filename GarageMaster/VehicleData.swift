@@ -29,33 +29,36 @@ class FuelingEvent {
 // MARK: - Maintinance Data
 
 class maintinanceSchedule{
-    enum scheduleType{
-        case oneTime
-        case recurring
-    }
+    
     //Range used to measure the precentage regurned by the expiration function.
     static var dateRange:Float = 90
     static var mileRange:Float = 1000
     
     //Data fields
     var name: String = "New Event"
-    var type: scheduleType = .oneTime
+    var oneTime: Bool = true
     var nextDateDue: Date?
     var nextmileDue: Float?
-    var History: [maintinanceEvent] = [maintinanceEvent(nil, nil, 4000), maintinanceEvent(nil, nil, 5000), maintinanceEvent(nil, nil, 6000), maintinanceEvent(nil, nil, 7000)]
+    var History: [maintinanceEvent] = []
     
     init (){}
-    init (name: String, type: scheduleType){
+    init (name: String, type: Bool){
         self.name = name
-        self.type = type
+        self.oneTime = type
     }
     
     func expiration(date: Date, mileage: Float?) -> Float?{
         
-        if type == .oneTime {return 1}
+        if oneTime {return 1}
         
         if nextDateDue != nil && nextmileDue != nil{
-            var datePercent = Float(date.distance(to: nextDateDue!)) / maintinanceSchedule.dateRange
+            
+            let calendar = Calendar.current
+            let date1 = calendar.startOfDay(for: nextDateDue!)
+            let date2 = calendar.startOfDay(for: date)
+            
+            var datePercent = Float((calendar.dateComponents([.day], from: date2, to: date1).day)!)
+            datePercent /= maintinanceSchedule.dateRange
             if datePercent > 1 {datePercent = 1}
             else if datePercent < 0 {datePercent = 0}
             
@@ -69,7 +72,13 @@ class maintinanceSchedule{
             else {return milePercent}
         }
         else if nextDateDue != nil {
-            var datePercent = Float(date.distance(to: nextDateDue!)) / maintinanceSchedule.dateRange
+            
+            let calendar = Calendar.current
+            let date1 = calendar.startOfDay(for: nextDateDue!)
+            let date2 = calendar.startOfDay(for: date)
+            
+            var datePercent = Float((calendar.dateComponents([.day], from: date2, to: date1).day)!)
+            datePercent /= maintinanceSchedule.dateRange
             if datePercent > 1 {datePercent = 1}
             else if datePercent < 0 {datePercent = 0}
             
@@ -142,7 +151,7 @@ class VehicleData{
         if capacity == nil || efficiency == nil {return nil}
         return capacity! * efficiency!
     }
-    var schedules: [maintinanceSchedule] = [maintinanceSchedule(name: "Miscellaneous", type: .oneTime)]
+    var schedules: [maintinanceSchedule] = [maintinanceSchedule(name: "Miscellaneous", type: true)]
     var fueling: [FuelingEvent] = []
     var company: String = "N/A#"
     var policyNumber: String = "N/A#"

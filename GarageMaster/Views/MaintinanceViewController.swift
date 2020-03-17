@@ -14,18 +14,11 @@ class UIMaintCell: UITableViewCell {
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var foreground: UIView!
     
-    var progress: Float? = 1
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        var scale: CGFloat = CGFloat(1)
         
-        if let progress = progress {
-            scale = background.frame.width * CGFloat(progress) - 30
-        }
-        
-        foreground.frame = CGRect(x: foreground.frame.origin.x, y: foreground.frame.origin.y, width: scale, height: foreground.frame.height)
+        foreground.frame = CGRect(x: foreground.frame.origin.x, y: foreground.frame.origin.y, width: 00, height: foreground.frame.height)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,15 +26,29 @@ class UIMaintCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func animateBar (progress: Float?){
+        var scale: CGFloat = CGFloat(1)
+        
+        if let progress = progress {
+            scale = self.background.frame.width * CGFloat(progress) - 30
+            if scale < 0 {scale = 0}
+        }
+        
+        UIView.animate(withDuration: 1, animations: {
+            self.foreground.frame = CGRect(x: self.foreground.frame.origin.x, y: self.foreground.frame.origin.y, width: scale, height: self.foreground.frame.height)
+        }, completion: nil)
+    }
 
 }
+//MARK: - Table
 
 class MaintinanceViewController: UITableViewController {
     var detail: VehicleData?
-
+    let dateFormat = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        dateFormat.dateFormat = "dd/mm/yyyy"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -52,6 +59,11 @@ class MaintinanceViewController: UITableViewController {
         navigationItem.rightBarButtonItem = addButton
         
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
     }
     
     @objc
@@ -76,7 +88,7 @@ class MaintinanceViewController: UITableViewController {
         // Configure the cell...
         if let category = detail?.schedules[indexPath.row]{
             cell.categoryLabel.text = category.name
-            cell.progress = category.expiration(date: Date(), mileage: detail!.mileage)
+            cell.animateBar(progress: category.expiration(date: Date(), mileage: detail!.mileage))
         }
         return cell
     }
@@ -127,6 +139,7 @@ class MaintinanceViewController: UITableViewController {
             
             if let inspector = segue.destination as? MaintinanceInspectorViewController {
                 inspector.category = detail?.schedules[index.row]
+                inspector.detail = self.detail
             }
             return
         default:

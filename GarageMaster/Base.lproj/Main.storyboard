@@ -176,7 +176,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGA-GQ-j8h">
                                                     <rect key="frame" x="169" y="180" width="225" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="doneEditing:" destination="pgU-05-ILz" eventType="editingDidEndOnExit" id="VcY-UG-vFS"/>
                                                     </connections>
@@ -448,8 +448,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-9K-z9x">
-                                                    <rect key="frame" x="20" y="161" width="111" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUD-9K-z9x">
+                                                    <rect key="frame" x="20" y="162" width="111" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="Knq-eY-F6a"/>
                                                     </constraints>
@@ -457,20 +457,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone #:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTc-gW-cOS">
-                                                    <rect key="frame" x="20" y="236" width="111" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone #:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTc-gW-cOS">
+                                                    <rect key="frame" x="20" y="237" width="111" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Fu3-Tx-evQ">
-                                                    <rect key="frame" x="139" y="124" width="255" height="109"/>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Fu3-Tx-evQ">
+                                                    <rect key="frame" x="139" y="124" width="255" height="110"/>
                                                     <connections>
                                                         <action selector="insuranceDateUpdate:" destination="pgU-05-ILz" eventType="valueChanged" id="Xnv-WW-6uD"/>
                                                     </connections>
                                                 </datePicker>
-                                                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ht9-E5-5wf">
-                                                    <rect key="frame" x="139" y="236" width="255" height="34"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ht9-E5-5wf">
+                                                    <rect key="frame" x="139" y="237" width="255" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
@@ -492,15 +492,15 @@
                                                 <constraint firstItem="bam-V7-eZJ" firstAttribute="trailing" secondItem="ebJ-yz-oxh" secondAttribute="trailingMargin" id="J76-iG-apd"/>
                                                 <constraint firstItem="dUD-9K-z9x" firstAttribute="leading" secondItem="qTc-gW-cOS" secondAttribute="leading" id="M7k-Ke-89t"/>
                                                 <constraint firstItem="dUD-9K-z9x" firstAttribute="trailing" secondItem="qTc-gW-cOS" secondAttribute="trailing" id="Njo-GY-QPK"/>
-                                                <constraint firstItem="ht9-E5-5wf" firstAttribute="top" secondItem="Fu3-Tx-evQ" secondAttribute="bottom" constant="3" id="O3S-Zd-hHF"/>
                                                 <constraint firstItem="bam-V7-eZJ" firstAttribute="trailing" secondItem="K2A-FZ-BM1" secondAttribute="trailing" id="Ob0-EY-5Kj"/>
                                                 <constraint firstItem="BIm-XK-Vh1" firstAttribute="leading" secondItem="AtM-3x-NRa" secondAttribute="leading" id="P5L-SS-VgX"/>
                                                 <constraint firstItem="qTc-gW-cOS" firstAttribute="bottom" secondItem="ht9-E5-5wf" secondAttribute="bottom" id="PNy-m5-7hM"/>
                                                 <constraint firstItem="qTc-gW-cOS" firstAttribute="top" secondItem="ht9-E5-5wf" secondAttribute="top" id="QS9-iq-U3m"/>
-                                                <constraint firstItem="Fu3-Tx-evQ" firstAttribute="top" secondItem="K2A-FZ-BM1" secondAttribute="bottom" constant="8" id="Ra9-v5-Lbf"/>
                                                 <constraint firstItem="bam-V7-eZJ" firstAttribute="leading" secondItem="AtM-3x-NRa" secondAttribute="trailing" constant="8" id="Seh-YL-6Q2"/>
                                                 <constraint firstItem="3bN-sq-iXL" firstAttribute="top" secondItem="K2A-FZ-BM1" secondAttribute="top" id="Su9-yd-s1c"/>
+                                                <constraint firstItem="ht9-E5-5wf" firstAttribute="top" secondItem="Fu3-Tx-evQ" secondAttribute="bottom" constant="3" id="YLQ-Ij-seB"/>
                                                 <constraint firstItem="Fu3-Tx-evQ" firstAttribute="trailing" secondItem="ht9-E5-5wf" secondAttribute="trailing" id="ax9-Au-hKf"/>
+                                                <constraint firstItem="Fu3-Tx-evQ" firstAttribute="top" secondItem="K2A-FZ-BM1" secondAttribute="bottom" constant="8" id="cQm-Nd-ccz"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qTc-gW-cOS" secondAttribute="bottom" constant="7" id="gLc-wL-R6B"/>
                                                 <constraint firstItem="BIm-XK-Vh1" firstAttribute="top" secondItem="ebJ-yz-oxh" secondAttribute="topMargin" id="kFe-ls-Agt"/>
                                                 <constraint firstItem="BIm-XK-Vh1" firstAttribute="trailing" secondItem="AtM-3x-NRa" secondAttribute="trailing" id="oTl-aR-VLT"/>
@@ -610,6 +610,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="BXg-1j-JTT" id="nTq-yF-puH"/>
+                                            <outlet property="descriptionLabel" destination="tvj-PH-VAd" id="7lf-2b-fBa"/>
                                             <outlet property="mileLabel" destination="DfA-Yu-8pU" id="acZ-VT-4g4"/>
                                             <outlet property="priceLabel" destination="4QR-ZR-lhk" id="vQu-OQ-Emq"/>
                                         </connections>
@@ -644,19 +645,31 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KcX-6N-6sh">
                                 <rect key="frame" x="259" y="306" width="51" height="31"/>
+                                <connections>
+                                    <action selector="eventSwitched:" destination="I9y-ia-68s" eventType="valueChanged" id="f2I-Mh-Fot"/>
+                                </connections>
                             </switch>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Maintinance Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="izm-CK-Zfj">
                                 <rect key="frame" x="144" y="99" width="250" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="exitField:" destination="I9y-ia-68s" eventType="editingDidEndOnExit" id="cZz-LI-YNM"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Next Due Mile" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FLK-65-YcS">
                                 <rect key="frame" x="144" y="141" width="250" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="exitField:" destination="I9y-ia-68s" eventType="editingDidEndOnExit" id="7av-be-16S"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="MVa-JT-gXO">
                                 <rect key="frame" x="144" y="183" width="250" height="107"/>
+                                <connections>
+                                    <action selector="newDate:" destination="I9y-ia-68s" eventType="valueChanged" id="w33-MB-etm"/>
+                                </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Due Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AG-Y5-jCz">
                                 <rect key="frame" x="20" y="194" width="116" height="21"/>
@@ -712,6 +725,9 @@
                             <constraint firstItem="KcX-6N-6sh" firstAttribute="leading" secondItem="zrx-Tg-qNG" secondAttribute="trailing" constant="28" id="ycw-Xe-Yxh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uHV-Wh-YPT"/>
+                        <connections>
+                            <action selector="touchBackground:" destination="I9y-ia-68s" eventType="touchDown" id="2T5-Ex-aoc"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Maintinance Inspector" id="BOz-bE-EHP">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="95B-0h-ae3">
@@ -954,7 +970,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bEg-a2-Liw"/>
                         <connections>
-                            <action selector="backgroundTap:" destination="rxM-ht-9yo" eventType="valueChanged" id="KyK-Cy-Hiy"/>
+                            <action selector="backgroundTap:" destination="rxM-ht-9yo" eventType="touchDown" id="XYr-ov-YvC"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Refueling" id="dd9-8e-Qho"/>
